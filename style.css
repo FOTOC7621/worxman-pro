@@ -1,1 +1,170 @@
+:root {
+    --orange: #F57C20;
+    --gray: #5B6166;
+    --dark: #202326;
+    --light: #f6f6f4;
+    --white: #ffffff;
+}
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--dark);
+    background: var(--light);
+    line-height: 1.6;
+}
+
+header {
+    background: var(--white);
+    padding: 25px 8%;
+    border-bottom: 5px solid var(--orange);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    max-width: 1150px;
+    margin: auto;
+}
+
+.logo {
+    width: 260px;
+    max-width: 40%;
+    height: auto;
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.tagline {
+    font-size: 1.15rem;
+    color: var(--gray);
+    font-weight: bold;
+}
+
+.hero {
+    background: linear-gradient(135deg, #202326, #3a3f43);
+    color: var(--white);
+    padding: 75px 8%;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 2.6rem;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 1.25rem;
+}
+
+.buttons {
+    margin-top: 35px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 24px;
+    margin: 8px;
+    background: var(--orange);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.btn.secondary {
+    background: white;
+    color: var(--dark);
+}
+
+section {
+    padding: 60px 8%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+section h2 {
+    font-size: 2rem;
+    border-left: 6px solid var(--orange);
+    padding-left: 14px;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+}
+
+.service-grid div {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border-top: 4px solid var(--orange);
+    font-weight: bold;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+
+.project {
+    text-align: center;
+}
+
+.project-img {
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.25);
+}
+
+.price-note {
+    background: white;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 20px 28px;
+    border-left: 6px solid var(--orange);
+    text-align: left;
+    box-shadow: 0 2px 12px rgba(0,0,0,.1);
+}
+
+.about {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 35px 8%;
+    border-top: 5px solid var(--orange);
+}
+
+@media (max-width: 700px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        max-width: 80%;
+        width: 220px;
+    }
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+}
