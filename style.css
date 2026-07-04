@@ -1,178 +1,110 @@
-:root {
-  --orange: #F57C20;
-  --gray: #5B6166;
-  --dark: #1f2326;
-  --light: #f5f5f2;
-  --white: #ffffff;
+* {
+    box-sizing: border-box;
 }
 
-* { box-sizing: border-box; }
-
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--light);
-  color: var(--dark);
-  line-height: 1.6;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    background: #f5f5f5;
 }
 
 header {
-  background: white;
-  border-bottom: 5px solid var(--orange);
-  padding: 22px 7%;
-}
-
-.header-container {
-  max-width: 1150px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  gap: 28px;
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(#222,#111);
+    color: white;
 }
 
 .logo {
-  width: 230px;
-  height: auto;
+    width: 280px;
+    max-width: 90%;
 }
 
 h1 {
-  font-size: 3rem;
-  margin: 0;
-  letter-spacing: .5px;
+    font-size: 48px;
+    margin: 10px;
 }
 
 .tagline {
-  margin: 5px 0 0;
-  color: var(--gray);
-  font-weight: 700;
+    color: #f57c20;
+    font-size: 20px;
+    font-weight: bold;
 }
 
-.hero {
-  background: linear-gradient(135deg, #1f2326 0%, #3d4449 100%);
-  color: white;
-  text-align: center;
-  padding: 85px 8%;
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    background: #f57c20;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.hero h2 {
-  font-size: 3rem;
-  margin: 0 0 18px;
-}
-
-.hero p {
-  max-width: 800px;
-  margin: auto;
-  font-size: 1.25rem;
-}
-
-.buttons {
-  margin-top: 34px;
-}
-
-.btn {
-  display: inline-block;
-  background: var(--orange);
-  color: white;
-  padding: 15px 26px;
-  border-radius: 7px;
-  text-decoration: none;
-  font-weight: 800;
-  margin: 8px;
-}
-
-.btn.secondary {
-  background: white;
-  color: var(--dark);
-}
 
 section {
-  max-width: 1150px;
-  margin: auto;
-  padding: 65px 7%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
 }
 
-section h2 {
-  font-size: 2.15rem;
-  margin-top: 0;
-  border-left: 7px solid var(--orange);
-  padding-left: 15px;
+h2 {
+    font-size: 34px;
 }
 
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 18px;
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 15px;
 }
 
-.service-grid div {
-  background: white;
-  padding: 22px;
-  border-radius: 10px;
-  border-top: 5px solid var(--orange);
-  font-weight: 800;
-  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+.services div {
+    background:white;
+    padding:18px;
+    border-left:5px solid #f57c20;
+    box-shadow:0 2px 8px #ccc;
 }
+
 
 .project {
-  text-align: center;
+    background:white;
+    margin:35px 0;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 3px 15px #bbb;
 }
 
 .project-img {
-  width: 100%;
-  max-width: 1000px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.22);
+    width:100%;
+    border-radius:10px;
 }
 
 .project h3 {
-  font-size: 1.8rem;
-  margin-top: 28px;
+    font-size:28px;
 }
 
-.project p {
-  background: white;
-  display: inline-block;
-  padding: 22px 30px;
-  border-left: 7px solid var(--orange);
-  text-align: left;
-  box-shadow: 0 6px 20px rgba(0,0,0,.1);
-  border-radius: 8px;
+.price {
+    font-size:24px;
+    color:#f57c20;
+    font-weight:bold;
 }
 
-.about {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,.08);
-  margin-bottom: 65px;
+
+li {
+    margin:8px 0;
 }
+
 
 footer {
-  background: var(--dark);
-  color: white;
-  text-align: center;
-  padding: 38px 8%;
-  border-top: 5px solid var(--orange);
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:35px;
 }
 
-footer a {
-  color: white;
-}
-
-@media (max-width: 750px) {
-  .header-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .logo {
-    width: 200px;
-  }
-
-  h1 {
-    font-size: 2.35rem;
-  }
-
-  .hero h2 {
-    font-size: 2.2rem;
-  }
+.footer-logo {
+    width:200px;
 }
