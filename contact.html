@@ -1,1 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact WorXMan Remodeling & Improvements for an estimate or project consultation.">
+  <title>Contact WorXMan | Request an Estimate</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="WorXMan home">
+        <span class="brand-mark" aria-hidden="true">⌂</span>
+        <span>
+          <span class="brand-name">Wor<span>X</span>Man</span>
+          <small>Remodeling & Improvements</small>
+        </span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#projects">Recent Projects</a>
+        <a href="index.html#about">About</a>
+        <a class="nav-cta" href="contact.html" aria-current="page">Contact Us</a>
+      </nav>
+    </div>
+  </header>
 
+  <main>
+    <section class="contact-hero">
+      <div class="shell">
+        <p class="eyebrow">Let’s discuss your project</p>
+        <h1>Contact WorXMan</h1>
+        <p>Complete the form below or call/text <a href="tel:+18017091223">801-709-1223</a>.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell contact-layout">
+        <article class="contact-card">
+          <h2>Request an Estimate</h2>
+          <p class="required-note">Fields marked with an <strong>*</strong> are required.</p>
+
+          <!--
+            FormSubmit sends this static GitHub Pages form to the existing WorXMan
+            business inbox. The first submission triggers a one-time activation email.
+            After deployment, submit one test message and approve that activation.
+          -->
+          <form id="contact-form" action="https://formsubmit.co/worxmanllc@protonmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New WorXMan Website Inquiry">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="true">
+            <input type="hidden" name="_next" value="https://worxman.pro/thank-you.html">
+            <input class="honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="form-grid two">
+              <label>First Name *
+                <input type="text" name="First Name" required autocomplete="given-name">
+              </label>
+              <label>Last Name *
+                <input type="text" name="Last Name" required autocomplete="family-name">
+              </label>
+            </div>
+
+            <div class="form-grid two">
+              <label>Email Address *
+                <input type="email" name="Email" required autocomplete="email">
+              </label>
+              <label>Phone Number
+                <input type="tel" name="Phone" autocomplete="tel">
+              </label>
+            </div>
+
+            <label>Project Location
+              <input type="text" name="Project Location" placeholder="City or neighborhood">
+            </label>
+
+            <label>Project Type *
+              <select name="Project Type" required>
+                <option value="">Select one</option>
+                <option>Kitchen remodeling</option>
+                <option>Bathroom remodeling</option>
+                <option>Hardwood, tile, or vinyl flooring</option>
+                <option>Cabinets or countertops</option>
+                <option>Painting or property improvements</option>
+                <option>Custom furniture or carpentry</option>
+                <option>Design or consulting</option>
+                <option>Other</option>
+              </select>
+            </label>
+
+            <label>Tell us about your project *
+              <textarea name="Message" rows="7" required placeholder="Describe the work, approximate size, desired timing, and any important details."></textarea>
+            </label>
+
+            <fieldset class="human-check">
+              <legend>Human verification *</legend>
+              <label for="verification">What color is the accent color used throughout this WorXMan website?</label>
+              <input id="verification" type="text" inputmode="text" autocomplete="off" required placeholder="Type the color">
+              <small>Hint: it is the color used on buttons and highlights.</small>
+              <p id="verification-error" class="form-error" role="alert" hidden>Please answer “orange” before sending.</p>
+            </fieldset>
+
+            <label class="consent">
+              <input type="checkbox" name="Permission to Contact" value="Yes" required>
+              <span>I authorize WorXMan to contact me about this project. *</span>
+            </label>
+
+            <button class="button primary submit-button" type="submit">Send Project Request</button>
+            <p class="privacy-note">Your email address is not displayed publicly on this website. This form includes a human-verification question, a hidden honeypot field, and CAPTCHA screening.</p>
+          </form>
+        </article>
+
+        <aside class="contact-sidebar">
+          <div class="sidebar-box dark">
+            <h2>Call or Text</h2>
+            <a class="phone-large" href="tel:+18017091223">801-709-1223</a>
+            <p>For quicker scheduling questions, photos, or basic project information.</p>
+          </div>
+          <div class="sidebar-box">
+            <h3>Helpful information to include</h3>
+            <ul>
+              <li>Project address or city</li>
+              <li>Type and approximate size of the project</li>
+              <li>Photos of the existing area</li>
+              <li>Your preferred timing</li>
+              <li>Any materials or design ideas already selected</li>
+            </ul>
+          </div>
+          <div class="sidebar-box">
+            <h3>WorXMan Services</h3>
+            <p>Remodeling, kitchens and bathrooms, flooring, cabinets and countertops, tile, painting, custom projects, property improvements, design, and consulting.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <div>
+        <strong>WorXMan LLC</strong>
+        <span>Remodeling • Flooring • Tile • Property Improvements</span>
+      </div>
+      <div class="footer-actions">
+        <a href="tel:+18017091223">801-709-1223</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function (event) {
+      const answer = document.getElementById('verification').value.trim().toLowerCase();
+      const error = document.getElementById('verification-error');
+      if (answer !== 'orange') {
+        event.preventDefault();
+        error.hidden = false;
+        document.getElementById('verification').focus();
+      } else {
+        error.hidden = true;
+      }
+    });
+  </script>
+</body>
+</html>
