@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Project Portfolio | WorXMan LLC</title>
+    <meta name="description" content="Explore before-and-after remodeling transformations showcasing Scott Workman's 30+ years of hands-on experience.">
+
+    <link rel="icon" href="favicon.png">
+
+    <style>
+        :root {
+            --orange: #f57c20;
+            --dark: #17191a;
+            --dark-two: #202224;
+            --panel: #292b2d;
+            --text: #ffffff;
+            --muted: #c9c9c9;
+            --border: #45484b;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            background: var(--dark);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+
+        a { color: inherit; }
+
+        .site-header {
+            background: #1d1f20;
+            border-bottom: 3px solid var(--orange);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrap {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+            min-height: 94px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .logo img {
+            display: block;
+            width: 180px;
+            height: auto;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            transition: color 0.2s ease;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active { color: var(--orange); }
+
+        .contact-button {
+            padding: 12px 20px;
+            background: var(--orange);
+            color: #fff !important;
+            border-radius: 999px;
+        }
+
+        .contact-button:hover { background: #dc6812; }
+
+        .portfolio-hero {
+            padding: 75px 20px 55px;
+            background:
+                radial-gradient(circle at 85% 10%, rgba(245,124,32,0.12), transparent 28%),
+                linear-gradient(135deg, #17191a, #242729);
+        }
+
+        .hero-inner {
+            width: min(1100px, 100%);
+            margin: 0 auto;
+        }
+
+        .eyebrow {
+            margin: 0 0 10px;
+            color: var(--orange);
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0 0 22px;
+            font-size: clamp(42px, 7vw, 72px);
+            line-height: 1.05;
+        }
+
+        .intro {
+            max-width: 1000px;
+            margin: 0;
+            color: var(--muted);
+            font-size: clamp(17px, 2vw, 20px);
+            line-height: 1.8;
+        }
+
+        .filter-section { padding: 34px 20px 10px; }
+
+        .filters {
+            width: min(1180px, 100%);
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .filter-button {
+            border: 1px solid var(--border);
+            background: var(--dark-two);
+            color: #fff;
+            padding: 11px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.2s ease;
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            background: var(--orange);
+            border-color: var(--orange);
+        }
+
+        .portfolio-section { padding: 35px 20px 80px; }
+
+        .gallery {
+            width: min(1400px, 100%);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .project-card {
+            overflow: hidden;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(0,0,0,.28);
+            transition: transform .22s ease, border-color .22s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--orange);
+        }
+
+        .project-image-button {
+            width: 100%;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: zoom-in;
+            display: block;
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            display: block;
+            object-fit: contain;
+            background: #111;
+        }
+
+        .project-info { padding: 18px 20px 21px; }
+
+        .project-category {
+            margin: 0 0 6px;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .project-title {
+            margin: 0;
+            font-size: 20px;
+            line-height: 1.3;
+        }
+
+        .project-card.hidden { display: none; }
+
+        .cta-section {
+            padding: 65px 20px;
+            background: #202224;
+            border-top: 3px solid var(--orange);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            margin: 0 0 12px;
+            font-size: clamp(30px, 4vw, 44px);
+        }
+
+        .cta-section p {
+            max-width: 720px;
+            margin: 0 auto 28px;
+            color: var(--muted);
+            font-size: 18px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .button-primary { background: var(--orange); color: #fff; }
+        .button-secondary { border: 1px solid #777; color: #fff; }
+
+        footer {
+            padding: 34px 20px;
+            text-align: center;
+            color: #999;
+            background: #141516;
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 28px;
+            background: rgba(0,0,0,.94);
+        }
+
+        .lightbox.open { display: flex; }
+
+        .lightbox-content {
+            max-width: min(1200px, 92vw);
+            max-height: 86vh;
+            position: relative;
+        }
+
+        .lightbox-image {
+            display: block;
+            max-width: 100%;
+            max-height: 80vh;
+            margin: auto;
+            object-fit: contain;
+            border: 2px solid #555;
+            box-shadow: 0 18px 55px rgba(0,0,0,.7);
+        }
+
+        .lightbox-caption {
+            margin-top: 12px;
+            text-align: center;
+            color: #fff;
+            font-size: 17px;
+        }
+
+        .lightbox-close,
+        .lightbox-prev,
+        .lightbox-next {
+            position: fixed;
+            border: 0;
+            background: rgba(30,30,30,.8);
+            color: white;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background .2s ease;
+        }
+
+        .lightbox-close:hover,
+        .lightbox-prev:hover,
+        .lightbox-next:hover { background: var(--orange); }
+
+        .lightbox-close {
+            top: 20px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            top: 50%;
+            transform: translateY(-50%);
+            width: 52px;
+            height: 52px;
+            font-size: 32px;
+        }
+
+        .lightbox-prev { left: 22px; }
+        .lightbox-next { right: 22px; }
+
+        @media (max-width: 1000px) {
+            .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .nav-wrap {
+                flex-direction: column;
+                justify-content: center;
+                padding: 18px 0;
+            }
+            .main-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .gallery { grid-template-columns: 1fr; }
+            .main-nav { gap: 14px; }
+            .main-nav a { font-size: 13px; }
+            .portfolio-hero { padding-top: 50px; }
+            .project-image { aspect-ratio: auto; }
+            .lightbox-prev,
+            .lightbox-next {
+                width: 42px;
+                height: 42px;
+                font-size: 25px;
+            }
+            .lightbox-prev { left: 8px; }
+            .lightbox-next { right: 8px; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="nav-wrap">
+        <a class="logo" href="index.html" aria-label="WorXMan home">
+            <img src="header-logo.png" alt="WorXMan - Built to Work">
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="index.html#services">Services</a>
+            <a href="index.html#projects">Recent Projects</a>
+            <a class="active" href="portfolio.html">Portfolio</a>
+            <a href="index.html#about">About</a>
+            <a class="contact-button" href="contact.html">Contact Us</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="portfolio-hero">
+        <div class="hero-inner">
+            <p class="eyebrow">Real projects • Real transformations</p>
+            <h1>Project Portfolio</h1>
+            <p class="intro">
+                Explore before-and-after transformations showcasing Scott Workman's
+                30+ years of hands-on remodeling, design, construction, installation,
+                and project management experience. Every project in this portfolio
+                reflects Scott's personal involvement—whether completed, helped
+                complete, designed, managed, or overseen throughout his career.
+            </p>
+        </div>
+    </section>
+
+    <section class="filter-section" aria-label="Portfolio filters">
+        <div class="filters">
+            <button class="filter-button active" data-filter="all">All Projects</button>
+            <button class="filter-button" data-filter="kitchen">Kitchens</button>
+            <button class="filter-button" data-filter="bathroom">Bathrooms</button>
+            <button class="filter-button" data-filter="shower">Tub &amp; Shower</button>
+            <button class="filter-button" data-filter="flooring">Flooring</button>
+            <button class="filter-button" data-filter="woodworking">Custom Woodworking</button>
+        </div>
+    </section>
+
+    <section class="portfolio-section">
+        <div class="gallery">
+
+            <article class="project-card" data-category="kitchen">
+                <button class="project-image-button" data-image="images/Kitchen Remodel-Millcreek-a.png" data-title="Kitchen Remodel — Millcreek">
+                    <img class="project-image" src="images/Kitchen Remodel-Millcreek-a.png" alt="Before and after kitchen remodel in Millcreek" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Kitchen Remodeling</p><h2 class="project-title">Kitchen Remodel — Millcreek</h2></div>
+            </article>
+
+            <article class="project-card" data-category="kitchen">
+                <button class="project-image-button" data-image="images/Kitchen Remodel-Millcreek-b.png" data-title="Kitchen Remodel — Millcreek">
+                    <img class="project-image" src="images/Kitchen Remodel-Millcreek-b.png" alt="Before and after Millcreek kitchen renovation" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Kitchen Remodeling</p><h2 class="project-title">Kitchen Remodel — Millcreek</h2></div>
+            </article>
+
+            <article class="project-card" data-category="kitchen">
+                <button class="project-image-button" data-image="images/Kitchen Remodel-Millcreek-c.png" data-title="Kitchen Remodel — Millcreek">
+                    <img class="project-image" src="images/Kitchen Remodel-Millcreek-c.png" alt="Before and after Millcreek kitchen transformation" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Kitchen Remodeling</p><h2 class="project-title">Kitchen Remodel — Millcreek</h2></div>
+            </article>
+
+            <article class="project-card" data-category="kitchen">
+                <button class="project-image-button" data-image="images/Kitchen-Remodel-SLC-Harvard.png" data-title="Kitchen Remodel — Harvard Area">
+                    <img class="project-image" src="images/Kitchen-Remodel-SLC-Harvard.png" alt="Before and after kitchen remodel in the Harvard area" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Kitchen Remodeling</p><h2 class="project-title">Kitchen Remodel — Harvard Area</h2></div>
+            </article>
+
+            <article class="project-card" data-category="kitchen">
+                <button class="project-image-button" data-image="images/Kitchen-Remodel-Sugar House-Steve-a.png" data-title="Kitchen Remodel — Sugar House">
+                    <img class="project-image" src="images/Kitchen-Remodel-Sugar House-Steve-a.png" alt="Before and after Sugar House kitchen remodel" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Kitchen Remodeling</p><h2 class="project-title">Kitchen Remodel — Sugar House</h2></div>
+            </article>
+
+            <article class="project-card" data-category="kitchen">
+                <button class="project-image-button" data-image="images/Kitchen-Remodel-Sugar House-Steve-b.png" data-title="Kitchen Remodel — Sugar House">
+                    <img class="project-image" src="images/Kitchen-Remodel-Sugar House-Steve-b.png" alt="Second before and after view of a Sugar House kitchen remodel" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Kitchen Remodeling</p><h2 class="project-title">Kitchen Remodel — Sugar House</h2></div>
+            </article>
+
+            <article class="project-card" data-category="kitchen">
+                <button class="project-image-button" data-image="images/kitchen-transformation-NSL.png" data-title="Complete Kitchen Transformation — North Salt Lake">
+                    <img class="project-image" src="images/kitchen-transformation-NSL.png" alt="Complete kitchen transformation in North Salt Lake" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Kitchen Remodeling</p><h2 class="project-title">Complete Kitchen Transformation — North Salt Lake</h2></div>
+            </article>
+
+            <article class="project-card" data-category="bathroom">
+                <button class="project-image-button" data-image="images/Bathroom-Vanity-Makeover-SLC-Cove.png" data-title="Bathroom Vanity Makeover — Salt Lake City">
+                    <img class="project-image" src="images/Bathroom-Vanity-Makeover-SLC-Cove.png" alt="Before and after bathroom vanity makeover in Salt Lake City" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Bathroom Remodeling</p><h2 class="project-title">Bathroom Vanity Makeover — Salt Lake City</h2></div>
+            </article>
+
+            <article class="project-card" data-category="bathroom">
+                <button class="project-image-button" data-image="images/Vanity-Closet-Transformation-Salt-Lake-City.png" data-title="Vanity and Closet Transformation — Salt Lake City">
+                    <img class="project-image" src="images/Vanity-Closet-Transformation-Salt-Lake-City.png" alt="Before and after vanity and closet transformation in Salt Lake City" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Bathroom Remodeling</p><h2 class="project-title">Vanity &amp; Closet Transformation — Salt Lake City</h2></div>
+            </article>
+
+            <article class="project-card" data-category="bathroom">
+                <button class="project-image-button" data-image="images/Vanity-Commode Update-Layton.png" data-title="Vanity and Commode Update — Layton">
+                    <img class="project-image" src="images/Vanity-Commode Update-Layton.png" alt="Before and after vanity and commode update in Layton" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Bathroom Remodeling</p><h2 class="project-title">Vanity &amp; Commode Update — Layton</h2></div>
+            </article>
+
+            <article class="project-card" data-category="bathroom">
+                <button class="project-image-button" data-image="images/Vanity-Transformation-Cottonwood-Heights.png" data-title="Vanity Transformation — Cottonwood Heights">
+                    <img class="project-image" src="images/Vanity-Transformation-Cottonwood-Heights.png" alt="Before and after vanity transformation in Cottonwood Heights" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Bathroom Remodeling</p><h2 class="project-title">Vanity Transformation — Cottonwood Heights</h2></div>
+            </article>
+
+            <article class="project-card" data-category="shower">
+                <button class="project-image-button" data-image="images/Shower Stall Transformation-Sandy.png" data-title="Shower Stall Transformation — Sandy">
+                    <img class="project-image" src="images/Shower Stall Transformation-Sandy.png" alt="Before and after shower stall transformation in Sandy" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Tub &amp; Shower Remodeling</p><h2 class="project-title">Shower Stall Transformation — Sandy</h2></div>
+            </article>
+
+            <article class="project-card" data-category="shower">
+                <button class="project-image-button" data-image="images/Shower-Tub-Transformation-Creek-Road-Sandy.png" data-title="Shower and Tub Transformation — Sandy">
+                    <img class="project-image" src="images/Shower-Tub-Transformation-Creek-Road-Sandy.png" alt="Before and after shower and tub transformation in Sandy" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Tub &amp; Shower Remodeling</p><h2 class="project-title">Shower &amp; Tub Transformation — Sandy</h2></div>
+            </article>
+
+            <article class="project-card" data-category="shower">
+                <button class="project-image-button" data-image="images/tub-surround-woods-cross.png" data-title="Tub Surround Transformation — Woods Cross">
+                    <img class="project-image" src="images/tub-surround-woods-cross.png" alt="Before and after tub surround transformation in Woods Cross" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Tub &amp; Shower Remodeling</p><h2 class="project-title">Tub Surround Transformation — Woods Cross</h2></div>
+            </article>
+
+            <article class="project-card" data-category="shower">
+                <button class="project-image-button" data-image="images/tub-tile-transformation-Bountiful.png" data-title="Tub and Tile Transformation — Bountiful">
+                    <img class="project-image" src="images/tub-tile-transformation-Bountiful.png" alt="Before and after tub and tile transformation in Bountiful" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Tub &amp; Shower Remodeling</p><h2 class="project-title">Tub &amp; Tile Transformation — Bountiful</h2></div>
+            </article>
+
+            <article class="project-card" data-category="flooring">
+                <button class="project-image-button" data-image="images/hardwood-flooring-sugar-house.png" data-title="Hardwood Flooring Transformation — Sugar House">
+                    <img class="project-image" src="images/hardwood-flooring-sugar-house.png" alt="Before and after hardwood flooring transformation in Sugar House" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Flooring</p><h2 class="project-title">Hardwood Flooring Transformation — Sugar House</h2></div>
+            </article>
+
+            <article class="project-card" data-category="woodworking">
+                <button class="project-image-button" data-image="images/custom-table-benches-NSL.png" data-title="Custom Dining Table and Benches — North Salt Lake">
+                    <img class="project-image" src="images/custom-table-benches-NSL.png" alt="Custom-built dining table and benches in North Salt Lake" loading="lazy">
+                </button>
+                <div class="project-info"><p class="project-category">Custom Woodworking</p><h2 class="project-title">Custom Dining Table &amp; Benches — North Salt Lake</h2></div>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to Transform Your Home?</h2>
+        <p>Contact WorXMan to discuss your kitchen, bathroom, flooring, tile, custom woodworking, or property-improvement project.</p>
+        <div class="cta-buttons">
+            <a class="button button-primary" href="contact.html">Request an Estimate</a>
+            <a class="button button-secondary" href="tel:+18017091223">Call or Text: 801-709-1223</a>
+        </div>
+    </section>
+</main>
+
+<footer>&copy; 2026 WorXMan LLC &bull; Built to Work</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Expanded portfolio image">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close image">&times;</button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous image">&#10094;</button>
+    <div class="lightbox-content">
+        <img class="lightbox-image" id="lightboxImage" src="" alt="">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+    <button class="lightbox-next" id="lightboxNext" aria-label="Next image">&#10095;</button>
+</div>
+
+<script>
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const projectCards = document.querySelectorAll(".project-card");
+
+    filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            filterButtons.forEach((item) => item.classList.remove("active"));
+            button.classList.add("active");
+            const filter = button.dataset.filter;
+            projectCards.forEach((card) => {
+                const matches = filter === "all" || card.dataset.category === filter;
+                card.classList.toggle("hidden", !matches);
+            });
+        });
+    });
+
+    const imageButtons = Array.from(document.querySelectorAll(".project-image-button"));
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const lightboxClose = document.getElementById("lightboxClose");
+    const lightboxPrev = document.getElementById("lightboxPrev");
+    const lightboxNext = document.getElementById("lightboxNext");
+    let currentImageIndex = 0;
+
+    function openLightbox(index) {
+        currentImageIndex = index;
+        const button = imageButtons[currentImageIndex];
+        lightboxImage.src = button.dataset.image;
+        lightboxImage.alt = button.dataset.title;
+        lightboxCaption.textContent = button.dataset.title;
+        lightbox.classList.add("open");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove("open");
+        document.body.style.overflow = "";
+    }
+
+    function showPreviousImage() {
+        currentImageIndex = (currentImageIndex - 1 + imageButtons.length) % imageButtons.length;
+        openLightbox(currentImageIndex);
+    }
+
+    function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % imageButtons.length;
+        openLightbox(currentImageIndex);
+    }
+
+    imageButtons.forEach((button, index) => {
+        button.addEventListener("click", () => openLightbox(index));
+    });
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightboxPrev.addEventListener("click", showPreviousImage);
+    lightboxNext.addEventListener("click", showNextImage);
+
+    lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (!lightbox.classList.contains("open")) return;
+        if (event.key === "Escape") closeLightbox();
+        if (event.key === "ArrowLeft") showPreviousImage();
+        if (event.key === "ArrowRight") showNextImage();
+    });
+</script>
+
+</body>
+</html>
