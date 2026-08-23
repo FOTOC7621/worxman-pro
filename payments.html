@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Pay your WorXMan invoice by check, Zelle, or credit card."
+  >
+
+  <title>Payments | WorXMan LLC</title>
+
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      background: #151718;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+    }
+
+    .payments-shell {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 55px 25px 80px;
+    }
+
+    .payments-heading {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .payments-heading h1 {
+      font-size: 46px;
+      margin: 0 0 12px;
+    }
+
+    .payments-heading p {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 19px;
+      line-height: 1.6;
+      color: #d7d7d7;
+    }
+
+    .no-fee-banner {
+      margin: 30px auto 42px;
+      padding: 18px 25px;
+      max-width: 760px;
+      background: #202325;
+      border: 1px solid #444;
+      border-left: 5px solid #f57c20;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .payment-card {
+      background: #242729;
+      border: 1px solid #45494c;
+      border-radius: 12px;
+      margin-bottom: 26px;
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.18);
+    }
+
+    .payment-number {
+      display: inline-block;
+      background: #f57c20;
+      color: #111;
+      font-weight: bold;
+      width: 34px;
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .payment-card h2 {
+      display: inline;
+      font-size: 27px;
+    }
+
+    .fee-free {
+      display: inline-block;
+      margin-left: 12px;
+      padding: 5px 9px;
+      border-radius: 5px;
+      background: #34393c;
+      font-size: 13px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .card-fee {
+      display: inline-block;
+      margin-left: 12px;
+      padding: 5px 9px;
+      border-radius: 5px;
+      background: #f57c20;
+      color: #111;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .payment-card p {
+      color: #e1e1e1;
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    .payment-button {
+      display: inline-block;
+      background: #f57c20;
+      color: #111;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 14px 24px;
+      border-radius: 7px;
+      margin-top: 8px;
+    }
+
+    .payment-button:hover {
+      opacity: .9;
+    }
+
+    details {
+      margin-top: 18px;
+      background: #191b1c;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 0;
+    }
+
+    details summary {
+      cursor: pointer;
+      padding: 17px 20px;
+      font-weight: bold;
+      color: #ffffff;
+      font-size: 17px;
+    }
+
+    .zelle-details {
+      padding: 0 20px 22px;
+      color: #e1e1e1;
+    }
+
+    .zelle-address {
+      display: block;
+      margin: 15px 0;
+      padding: 14px;
+      background: #101112;
+      border-left: 4px solid #f57c20;
+      font-size: 18px;
+      font-weight: bold;
+      word-break: break-word;
+    }
+
+    .important-note {
+      margin-top: 20px;
+      font-size: 15px !important;
+      color: #bfc2c4 !important;
+    }
+
+    .secure-note {
+      text-align: center;
+      margin-top: 40px;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .payments-heading h1 {
+        font-size: 36px;
+      }
+
+      .payment-card {
+        padding: 24px 20px;
+      }
+
+      .payment-card h2 {
+        font-size: 23px;
+      }
+
+      .fee-free,
+      .card-fee {
+        display: block;
+        width: fit-content;
+        margin: 12px 0 0 44px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="shell header-inner">
+
+      <a class="brand" href="index.html" aria-label="WorXMan home">
+        <img
+          class="header-logo"
+          src="header-logo.png"
+          alt="WorXMan Remodeling & Improvements"
+        >
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#projects">Recent Projects</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="payments.html">Payments</a>
+        <a href="index.html#about">About</a>
+        <a class="nav-cta" href="contact.html">Contact Us</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main class="payments-shell">
+
+    <!-- PAGE INTRO -->
+    <section class="payments-heading">
+
+      <p class="eyebrow">WorXMan LLC</p>
+
+      <h1>Make a Payment</h1>
+
+      <p>
+        Choose the payment method that works best for you.
+        Please reference your WorXMan invoice or statement for the amount due.
+      </p>
+
+      <div class="no-fee-banner">
+        <strong>Want to avoid additional fees?</strong><br>
+        Pay by check or Zelle. Both options have no additional payment fee.
+      </div>
+
+    </section>
+
+
+    <!-- OPTION 1 -->
+    <section class="payment-card">
+
+      <span class="payment-number">1</span>
+      <h2>Pay by Check</h2>
+      <span class="fee-free">NO ADDITIONAL FEE</span>
+
+      <p>
+        You are welcome to pay your WorXMan invoice by check.
+        There is no additional payment fee.
+      </p>
+
+      <p>
+        Please make your check payable to <strong>WorXMan LLC</strong>.
+        Contact Scott to arrange a convenient time for your payment
+        to be picked up.
+      </p>
+
+      <a class="payment-button" href="tel:+18017091223">
+        Call / Text 801-709-1223
+      </a>
+
+    </section>
+
+
+    <!-- OPTION 2 -->
+    <section class="payment-card">
+
+      <span class="payment-number">2</span>
+      <h2>Pay with Zelle</h2>
+      <span class="fee-free">NO ADDITIONAL FEE</span>
+
+      <p>
+        Zelle allows you to make a payment directly through your
+        participating bank or credit union with no additional
+        WorXMan payment fee.
+      </p>
+
+      <details>
+        <summary>Click here for Zelle payment instructions</summary>
+
+        <div class="zelle-details">
+
+          <p>
+            Open your bank or credit union's mobile app or website and
+            select <strong>Zelle</strong> or
+            <strong>Send Money with Zelle</strong>.
+          </p>
+
+          <p>
+            Use the WorXMan payment email address shown below:
+          </p>
+
+          <span class="zelle-address">
+            Zelle payment email:<br>
+            worxmanllc@protonmail.com
+          </span>
+
+          <p>
+            Enter the amount shown on your WorXMan invoice or statement
+            and verify the recipient information before sending your payment.
+          </p>
+
+          <a
+            class="payment-button"
+            href="https://www.youtube.com/watch?v=FhL1HKUOStM"
+            target="_blank"
+            rel="noopener"
+          >
+            Watch How to Pay with Zelle
+          </a>
+
+          <p class="important-note">
+            Please make sure you use the WorXMan payment information
+            shown on this page when sending your payment.
+          </p>
+
+        </div>
+      </details>
+
+    </section>
+
+
+    <!-- OPTION 3 -->
+    <section class="payment-card">
+
+      <span class="payment-number">3</span>
+      <h2>Pay by Credit Card</h2>
+      <span class="card-fee">3% CREDIT CARD FEE</span>
+
+      <p>
+        If you prefer to pay by credit card, you may securely pay through
+        our Square credit card service.
+      </p>
+
+      <p>
+        <strong>
+          Please add 3% to the total amount shown on your WorXMan
+          invoice or statement
+        </strong>
+        to cover the credit card processing fee, and enter that total
+        on the Square payment page.
+      </p>
+
+      <p>
+        <strong>Example:</strong>
+        If your invoice is $1,000, add $30 and enter a payment of
+        <strong>$1,030.</strong>
+      </p>
+
+      <a
+        class="payment-button"
+        href="https://square.link/u/75jf97Xa"
+        target="_blank"
+        rel="noopener"
+      >
+        Pay by Credit Card
+      </a>
+
+    </section>
+
+
+    <div class="secure-note">
+      WorXMan LLC • Built To Work<br>
+      Credit card payments are securely processed by Square.
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="shell footer-inner">
+
+      <div>
+        <strong>WorXMan LLC</strong>
+        <span>
+          Remodeling • Flooring • Tile • Property Improvements
+        </span>
+      </div>
+
+      <div class="footer-actions">
+        <a href="tel:+18017091223">801-709-1223</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
