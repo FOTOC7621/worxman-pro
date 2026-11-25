@@ -16,7 +16,7 @@
   <title>Contact WorXMan | Request an Estimate</title>
   <link rel="icon" href="favicon.png">
   <link rel="stylesheet" href="styles.css">
-</head>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script></head>
 
 <body>
 
@@ -76,41 +76,21 @@
             Fields marked with an <strong>*</strong> are required.
           </p>
 
-          <!--
-            FormSubmit sends this static GitHub Pages form to the existing WorXMan
-            business inbox. The first submission triggers a one-time activation email.
-            After deployment, submit one test message and approve that activation.
-          -->
+
 
           <form
             id="contact-form"
-            action="https://formsubmit.co/worxmanllc@protonmail.com"
+            action="https://friendsoftheoriginalconstitution.org/worxman-contact.php"
             method="POST"
           >
 
-            <input
-              type="hidden"
-              name="_subject"
-              value="New WorXMan Website Inquiry"
-            >
 
-            <input
-              type="hidden"
-              name="_template"
-              value="table"
-            >
 
-            <input
-              type="hidden"
-              name="_captcha"
-              value="true"
-            >
 
-            <input
-              type="hidden"
-              name="_next"
-              value="https://worxman.pro/thank-you.html"
-            >
+
+
+
+
 
             <input
               class="honeypot"
@@ -213,37 +193,7 @@
             </label>
 
 
-            <fieldset class="human-check">
-
-              <legend>Human verification *</legend>
-
-              <label for="verification">
-                What color is the accent color used throughout this WorXMan website?
-              </label>
-
-              <input
-                id="verification"
-                type="text"
-                inputmode="text"
-                autocomplete="off"
-                required
-                placeholder="Type the color"
-              >
-
-              <small>
-                Hint: it is the color used on buttons and highlights.
-              </small>
-
-              <p
-                id="verification-error"
-                class="form-error"
-                role="alert"
-                hidden
-              >
-                Please answer “orange” before sending.
-              </p>
-
-            </fieldset>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAGSyEPgSd9_wP7Tg" data-action="contact"></div>
 
 
             <label class="consent">
@@ -270,11 +220,7 @@
             </button>
 
 
-            <p class="privacy-note">
-              Your email address is not displayed publicly on this website.
-              This form includes a human-verification question, a hidden
-              honeypot field, and CAPTCHA screening.
-            </p>
+            <p id="form-status" role="status" aria-live="polite"></p><p class="privacy-note">Your information is used to respond to your inquiry. Spam protection is provided by Cloudflare Turnstile. See the <a href="https://www.cloudflare.com/turnstile-privacy-policy/">Privacy Addendum</a>.</p>
 
           </form>
 
@@ -369,42 +315,7 @@
   </footer>
 
 
-  <!-- HUMAN VERIFICATION -->
-  <script>
-
-    document
-      .getElementById('contact-form')
-      .addEventListener('submit', function (event) {
-
-        const answer =
-          document
-            .getElementById('verification')
-            .value
-            .trim()
-            .toLowerCase();
-
-        const error =
-          document.getElementById('verification-error');
-
-        if (answer !== 'orange') {
-
-          event.preventDefault();
-
-          error.hidden = false;
-
-          document
-            .getElementById('verification')
-            .focus();
-
-        } else {
-
-          error.hidden = true;
-
-        }
-
-      });
-
-  </script>
+  <script>const form=document.getElementById("contact-form");const btn=form.querySelector("button[type=submit]");const statusBox=document.getElementById("form-status");form.addEventListener("submit",async function(e){e.preventDefault();btn.disabled=true;btn.textContent="Sending...";statusBox.textContent="";try{for(let i=0;i<50&&!new FormData(form).get("cf-turnstile-response");i++){await new Promise(r=>setTimeout(r,200));}const data=new FormData(form);if(!data.get("cf-turnstile-response"))throw new Error("Security check not ready.");const response=await fetch(form.action,{method:"POST",body:data});const result=await response.json();if(!response.ok||result.success!==true)throw new Error(result.message||"Unable to send.");window.location.assign("https://worxman.pro/thank-you.html");}catch(err){statusBox.textContent="Unable to send. Please try again or call 801-709-1223.";if(window.turnstile)window.turnstile.reset();btn.disabled=false;btn.textContent="Send Project Request";}});</script>
 
 </body>
 </html>
